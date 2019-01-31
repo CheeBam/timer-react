@@ -17,6 +17,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import styles from '../styles';
 import { getTask, clearTask } from '../actions/task';
+import ring from '../ring.svg';
 
 class Info extends PureComponent {
 
@@ -41,7 +42,7 @@ class Info extends PureComponent {
         if (task.loading) {
             return (
                 <div className={classes.infoPreloader}>
-                    <img src='/ring.svg' alt="" height={100} />
+                    <img src={ring} alt="" height={100} />
                 </div>
             )
         } else if (task.failed && item === 404) {
