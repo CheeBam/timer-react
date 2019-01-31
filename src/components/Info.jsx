@@ -16,8 +16,8 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 import styles from '../styles';
+import ring from '../styles/images/ring.svg';
 import { getTask, clearTask } from '../actions/task';
-import ring from '../ring.svg';
 
 class Info extends PureComponent {
 
@@ -38,7 +38,6 @@ class Info extends PureComponent {
     renderInfo() {
         const { task, classes } = this.props;
         const { item } = task;
-        console.log('sss', task);
 
         if (task.loading) {
             return (

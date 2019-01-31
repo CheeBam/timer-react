@@ -8,9 +8,10 @@ import NotFound from './components/NotFound';
 
 export default class App extends Component {
     render() {
-        console.log(process.env.PUBLIC_URL);
+        const { PUBLIC_URL } = process.env;
+
         return (
-            <BrowserRouter basename={process.env.PUBLIC_URL}>
+            <BrowserRouter basename={PUBLIC_URL}>
                 <Switch>
                     <Route exact path='/404' component={NotFound}/>
                     <Route path='/tasks/:id' component={Info}/>

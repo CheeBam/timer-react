@@ -119,7 +119,9 @@ class Task extends Component {
 
         return (
             <Grid container spacing={8} justify={'center'} className={classes.taskWrapper}>
-                <MyDialog open={dialog} closeDialog={this.closeDialog}/>
+                <Grid item xs={12}>
+                    <MyDialog open={dialog} closeDialog={this.closeDialog}/>
+                </Grid>
                 <Grid item xs={12}>
                     <Input className="taskInput" value={name} name={'timerName'} onChange={this.onChangeName}/>
                 </Grid>

@@ -33,7 +33,6 @@ class Main extends Component {
     };
 
     render() {
-        console.log('v3');
         const { classes } = this.props;
         const tab = this.getCurrentTab();
         return (
@@ -41,7 +40,7 @@ class Main extends Component {
                 <Task/>
                 <Grid container spacing={8} justify={'center'} className={classes.mainContainer}>
                     <Grid item lg={1}/>
-                    <Grid item lg={9} md={12}>
+                    <Grid item lg={9} md={12} xs={12}>
                         <Tabs value={tab} className={classes.mainTabList} variant='fullWidth'>
                             <Tab className={classes.mainTab} label='Tasks log' value='log' component={Link} to='/log'/>
                             <Tab className={classes.mainTab} label='Tasks chart' value='chart' component={Link} to='/chart'/>

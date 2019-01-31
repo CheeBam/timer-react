@@ -9,35 +9,20 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 import styles from '../../styles';
-import { clearLogAction, addLogAction } from '../../actions/timer';
+import { clearLogAction, createLogAction} from '../../actions/timer';
 
 import { getRandom, buildChartData } from '../../helpers';
 import { GENERATE_MIN_DURATION, GENERATE_MAX_DURATION, GENERATE_MIN_INTERVAL, GENERATE_MAX_INTERVAL, GENERATE_MIN_TASKS, GENERATE_MAX_TASKS, GENERATE_START_HOUR}  from '../../helpers/constants';
 
 class Chart extends Component {
 
-    state = {
-        chartData: [],
-    };
-
-    componentDidMount() {
-        this.calculateData();
-    }
-
-    calculateData = () => {
-        const { list } = this.props;
-
-        this.setState({
-            chartData: buildChartData(list),
-        })
-    };
-
     generateEvents = () => {
-        const { addToLog, clearLog } = this.props;
+        const { createLog, clearLog } = this.props;
 
         clearLog();
 
         let date = DateTime.fromObject({ hour: GENERATE_START_HOUR });
+        const list = [];
 
         for (let i = 1; i < getRandom(GENERATE_MIN_TASKS, GENERATE_MAX_TASKS); i++) {
             const interval = getRandom(GENERATE_MIN_INTERVAL, GENERATE_MAX_INTERVAL);
@@ -54,20 +39,19 @@ class Chart extends Component {
                 duration: end.diff(start, ['hours', 'minutes', 'seconds']).toObject(),
             };
 
-            addToLog(item);
+            list.push(item);
         }
 
-        setImmediate(() => { this.calculateData() });
+        createLog(list);
     };
 
     render() {
-        const { chartData } = this.state;
-        const { classes } = this.props;
+        const { classes, list } = this.props;
 
         return (
             <Fragment>
                 <ResponsiveContainer width='100%' height={300}>
-                    <BarChart data={chartData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>>
+                    <BarChart data={buildChartData(list)} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>>
                         <XAxis dataKey='hour' />
                         <YAxis />
                         <CartesianGrid/>
@@ -91,7 +75,7 @@ export default connect(
         list: state.timer.list,
     }),
     (dispatch) => ({
-        addToLog: (item) => dispatch(addLogAction(item)),
-        clearLog: (item) => dispatch(clearLogAction()),
+        createLog: (list) => dispatch(createLogAction(list)),
+        clearLog: () => dispatch(clearLogAction()),
     })
     )(withStyles(styles)(Chart));

@@ -1,4 +1,4 @@
-import { CREATE_ITEM, ITEM_SET_NAME, ADD_TO_LOG, DELETE_FROM_LOG, CLEAR_LOG } from '../actions/timer';
+import { CREATE_ITEM, CREATE_LOG, ITEM_SET_NAME, ADD_TO_LOG, DELETE_FROM_LOG, CLEAR_LOG } from '../actions/timer';
 
 export const INITIAL_STATE = {
     item: {
@@ -17,6 +17,11 @@ export default function timerReducer(state = INITIAL_STATE, action) {
             return {
                 item: action.payload,
                 list: state.list,
+            };
+        case CREATE_LOG:
+            return {
+                item: state.item,
+                list: action.payload,
             };
         case ITEM_SET_NAME:
             return {

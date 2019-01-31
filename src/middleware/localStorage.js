@@ -1,10 +1,14 @@
-import { CREATE_ITEM, ITEM_SET_NAME, ADD_TO_LOG, DELETE_FROM_LOG, CLEAR_LOG } from '../actions/timer';
+import { CREATE_ITEM, CREATE_LOG, ITEM_SET_NAME, ADD_TO_LOG, DELETE_FROM_LOG, CLEAR_LOG } from '../actions/timer';
 
 export default () => () => next => action => {
     if (action.type) {
         switch (action.type) {
             case CREATE_ITEM: {
                 localStorage.setItem('item', JSON.stringify(action.payload));
+                break;
+            }
+            case CREATE_LOG: {
+                localStorage.setItem('list', JSON.stringify(action.payload));
                 break;
             }
             case ADD_TO_LOG: {

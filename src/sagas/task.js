@@ -5,7 +5,7 @@
 
 import { all, call, put, takeLatest, select } from 'redux-saga/effects';
 
-import { GET_TASK, GET_TASK_LOADING, GET_TASK_SUCCESS, GET_TASK_FAILED} from '../actions/task';
+import { GET_TASK, GET_TASK_SUCCESS, GET_TASK_FAILED} from '../actions/task';
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
