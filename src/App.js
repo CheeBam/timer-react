@@ -13,13 +13,13 @@ export default class App extends Component {
         console.log(PUBLIC_URL);
 
         return (
-            <BrowserRouter basename={process.env.PUBLIC_URL}>
+            //{/*<BrowserRouter basename={process.env.PUBLIC_URL}>*/}
                 <Switch>
                     <Route exact path='/404' component={NotFound}/>
                     <Route path='/tasks/:id' component={Info}/>
                     <Route path='/:tab?' component={Main} />
                 </Switch>
-            </BrowserRouter>
+            // </BrowserRouter>
         );
     }
 }

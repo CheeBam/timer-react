@@ -6,6 +6,9 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 
+import { Router } from 'react-router';
+import createHashHistory from 'history/createHashHistory';
+
 import { DateTime } from 'luxon';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
@@ -69,9 +72,13 @@ const store = createStore(
 
 sagaMiddleware.run(rootSaga);
 
+const hashHistory = createHashHistory({ basename: process.env.PUBLIC_URL });
+
 ReactDOM.render(
     <Provider store={ store }>
-        <App />
+        <Router history={hashHistory}>
+            <App />
+        </Router>
     </Provider>,
     document.getElementById('root'));
 
