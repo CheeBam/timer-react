@@ -39,15 +39,15 @@ class Main extends Component {
             <Fragment>
                 <Task/>
                 <Grid container spacing={8} justify={'center'} className={classes.mainContainer}>
-                    <Grid container spacing={8} lg={1} md={0}/>
-                    <Grid container spacing={8} lg={9} md={12}>
+                    <Grid item lg={1}/>
+                    <Grid item lg={9} md={12}>
                         <Tabs value={tab} className={classes.mainTabList} variant='fullWidth'>
                             <Tab className={classes.mainTab} label='Tasks log' value='log' component={Link} to='/log'/>
                             <Tab className={classes.mainTab} label='Tasks chart' value='chart' component={Link} to='/chart'/>
                         </Tabs>
                         { this.renderTab() }
                     </Grid>
-                    <Grid container spacing={8} lg={1} md={0}/>
+                    <Grid item lg={1}/>
                 </Grid>
             </Fragment>
         )

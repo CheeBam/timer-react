@@ -1,4 +1,4 @@
-import { GET_TASK, GET_TASK_SUCCESS, GET_TASK_LOADING, GET_TASK_FAILED, CLEAR_TASK } from '../actions/task';
+import { GET_TASK_SUCCESS, GET_TASK_LOADING, GET_TASK_FAILED, CLEAR_TASK } from '../actions/task';
 
 export const INITIAL_STATE = {
     loading: false,
@@ -37,9 +37,6 @@ export default function taskReducer(state = INITIAL_STATE, action) {
                 failed: true,
                 item: action.payload,
             };
-
-        case GET_TASK:
-            return state;
 
         case CLEAR_TASK:
             return INITIAL_STATE;
