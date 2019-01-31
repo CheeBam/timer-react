@@ -1,7 +1,7 @@
 import { GET_TASK_SUCCESS, GET_TASK_LOADING, GET_TASK_FAILED, CLEAR_TASK } from '../actions/task';
 
 export const INITIAL_STATE = {
-    loading: false,
+    loading: true,
     success: false,
     failed: false,
     item: {

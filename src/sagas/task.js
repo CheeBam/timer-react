@@ -15,10 +15,6 @@ const getList = state => state.timer.list;
  */
 export function* getTask(data) {
     try {
-        yield put({
-            type: GET_TASK_LOADING,
-        });
-
         yield call(delay, 1000);
         const list = yield select(getList);
 

@@ -38,6 +38,7 @@ class Info extends PureComponent {
     renderInfo() {
         const { task, classes } = this.props;
         const { item } = task;
+        console.log('sss', task);
 
         if (task.loading) {
             return (
