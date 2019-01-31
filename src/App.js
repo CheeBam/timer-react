@@ -10,11 +10,11 @@ export default class App extends Component {
     render() {
         console.log(process.env.PUBLIC_URL);
         return (
-            <BrowserRouter>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
                 <Switch>
-                    <Route exact path={`/${process.env.PUBLIC_URL}/404`} component={NotFound}/>
-                    <Route path={`/${process.env.PUBLIC_URL}/tasks/:id`} component={Info}/>
-                    <Route path={`/${process.env.PUBLIC_URL}/:tab?`} component={Main} />
+                    <Route exact path='/404' component={NotFound}/>
+                    <Route path='/tasks/:id' component={Info}/>
+                    <Route path='/:tab?' component={Main} />
                 </Switch>
             </BrowserRouter>
         );

@@ -33,7 +33,7 @@ class Main extends Component {
     };
 
     render() {
-        console.log('v1');
+        console.log('v3');
         const { classes } = this.props;
         const tab = this.getCurrentTab();
         return (
