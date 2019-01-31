@@ -1,7 +1,7 @@
 {
   "main.css": "/timer-react/static/css/main.57f58348.chunk.css",
-  "main.js": "/timer-react/static/js/main.d39f412e.chunk.js",
-  "main.js.map": "/timer-react/static/js/main.d39f412e.chunk.js.map",
+  "main.js": "/timer-react/static/js/main.257d673a.chunk.js",
+  "main.js.map": "/timer-react/static/js/main.257d673a.chunk.js.map",
   "static/js/1.90d7a3ea.chunk.js": "/timer-react/static/js/1.90d7a3ea.chunk.js",
   "static/js/1.90d7a3ea.chunk.js.map": "/timer-react/static/js/1.90d7a3ea.chunk.js.map",
   "runtime~main.js": "/timer-react/static/js/runtime~main.7a485580.js",
@@ -9,6 +9,6 @@
   "static/media/ring.svg": "/timer-react/static/media/ring.4d1881e7.svg",
   "static/css/main.57f58348.chunk.css.map": "/timer-react/static/css/main.57f58348.chunk.css.map",
   "index.html": "/timer-react/index.html",
-  "precache-manifest.e7644bba1b29abb2d0ddf325a78447d5.js": "/timer-react/precache-manifest.e7644bba1b29abb2d0ddf325a78447d5.js",
+  "precache-manifest.e24c6c04046f359f419c46cb97ff392b.js": "/timer-react/precache-manifest.e24c6c04046f359f419c46cb97ff392b.js",
   "service-worker.js": "/timer-react/service-worker.js"
 }
