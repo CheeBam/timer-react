@@ -1,68 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Timer
 
-## Available Scripts
+## Requirements
 
-In the project directory, you can run:
+##### Необходимо реализовать таймер учета времени потраченного на задачи.
 
-### `npm start`
+1) При нажатии на кнопку START (под таймером) - таймер начинает отсчет. 
+Кнопка меняется на STOP.
+2) При нажатии на STOP - фиксируется время задачи и задача сохраняется в лог (таблицу). Таймер и имя задачи - сбрасываются.
+3) Если при нажатии на STOP поле с именем задачи  (над таймером) не заполнено, то выводится предупреждение (скрин 2).
+4) Данные по задачам должны сохраняться при перезагрузке страницы. Запущенный таймер должен продолжать идти, как если бы его не выключали (то-есть если приложение закрыли и на таймере было 1 минута, и открыли через 5 минут - на таймере должно быть 6 минут).
+5) Под таймером находятся 2 таба: 1) лог задач (таблица) и 2) график распределения времени (скрин 3). Переключение табов должно менять URL (чтобы по ссылке можно было открыть второй таб с графиком).
+6) Лог задач должен содержать: имя задачи, время старта, время окончания, длительность, ссылку на детальную страницу, кнопку удаления задачи из лога.
+7) Детальная страница задачи (/tasks/:id) должна содержать всю информацию по задаче (то же что и в таблице, в произвольной верстке) и кнопку возврата на главную страницу.
+8) При переходе на страницу несуществующей задачи (например /tasks/999) - выводить страницу с сообщением об ошибке.
+9) График распределения времени (скрин 3) должен отображать разбивку задач в минутах по каждому из 24 часов за текущие сутках. Например: задача с 14-30 до 16-15 должна разбиваться на 3 части: 14й час: 30мин, 15й час: 60мин, 16й час: 15мин. Для графика использовать библиотеку Recharts.
+10) Реализовать генератор задач. Кнопку GENERATE расположить под графиком справа. По нажатию - генерировать 10-15 задач длительностью от 10-90 мин. Лог предварительно очищается.
+11) Реализовать тест (используя Jest) на функцию группировки задач для графика по часам.
+12) Для реализации используем react-create-app starter kit. В задаче используем Redux, Redux Saga. Дизайн - MaterialUI.
+13) Результат присылать в виде ссылки на Github (код) и Github pages (результат).
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+!["Timer1"](http://oi64.tinypic.com/2dhtenc.jpg "Timer1")
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+!["Timer2"](http://oi63.tinypic.com/2m7b41d.jpg "Timer2")
 
-### `npm test`
+!["Timer3"](http://oi65.tinypic.com/262qmus.jpg "Timer3")
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
