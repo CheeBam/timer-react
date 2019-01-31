@@ -2,6 +2,7 @@
   "name": "timer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://cheebam.github.io/timer-react/",
   "dependencies": {
     "@material-ui/core": "^3.9.0",
     "luxon": "^1.10.0",
@@ -19,7 +20,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -31,6 +34,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "jest": "23.6.0"
   }
 }
