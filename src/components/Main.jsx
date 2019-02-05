@@ -1,4 +1,4 @@
-import React, { Component , Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 import Grid from '@material-ui/core/Grid';
@@ -11,46 +11,62 @@ import Task from './parts/Task';
 import Log from './parts/Log';
 import Chart from './parts/Chart';
 
-class Main extends Component {
+const getCurrentTab = props => {
+  const {
+    match: {
+      params: { tab = 'log' },
+    },
+  } = props;
+  return tab;
+};
 
-    getCurrentTab = () => {
-        const { match: { params: { tab = 'log' }} } = this.props;
-        return tab;
-    };
+const renderTab = tab => {
+  switch (tab) {
+    case 'log':
+      return <Log />;
+    case 'chart':
+      return <Chart />;
+    default:
+      return '';
+  }
+};
 
-    renderTab = () => {
-        const tab = this.getCurrentTab();
+const Main = props => {
+  const { classes } = props;
+  const tab = getCurrentTab(props);
+  return (
+    <Fragment>
+      <Task />
+      <Grid
+        container
+        spacing={8}
+        justify="center"
+        className={classes.mainContainer}
+      >
+        <Grid item lg={1} />
+        <Grid item lg={9} md={12} xs={12}>
+          <Tabs value={tab} className={classes.mainTabList} variant="fullWidth">
+            <Tab
+              className={classes.mainTab}
+              label="Tasks log"
+              value="log"
+              component={Link}
+              to="/log"
+            />
+            <Tab
+              className={classes.mainTab}
+              label="Tasks chart"
+              value="chart"
+              component={Link}
+              to="/chart"
+            />
+          </Tabs>
+          {renderTab(tab)}
+        </Grid>
+        <Grid item lg={1} />
+      </Grid>
+    </Fragment>
+  );
+};
 
-        switch (tab) {
-            case 'log':
-                return <Log/>;
-            case 'chart':
-                return <Chart/>;
-            default:
-                return '';
-        }
-
-    };
-
-    render() {
-        const { classes } = this.props;
-        const tab = this.getCurrentTab();
-        return (
-            <Fragment>
-                <Task/>
-                <Grid container spacing={8} justify={'center'} className={classes.mainContainer}>
-                    <Grid item lg={1}/>
-                    <Grid item lg={9} md={12} xs={12}>
-                        <Tabs value={tab} className={classes.mainTabList} variant='fullWidth'>
-                            <Tab className={classes.mainTab} label='Tasks log' value='log' component={Link} to='/log'/>
-                            <Tab className={classes.mainTab} label='Tasks chart' value='chart' component={Link} to='/chart'/>
-                        </Tabs>
-                        { this.renderTab() }
-                    </Grid>
-                    <Grid item lg={1}/>
-                </Grid>
-            </Fragment>
-        )
-    }
-
-} export default withStyles(styles)(Main);
+export default withStyles(styles)(Main);

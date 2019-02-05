@@ -4,8 +4,8 @@ import timer from './timerReducer';
 import task from './taskReducer';
 
 const rootReducer = combineReducers({
-    timer,
-    task,
+  timer,
+  task,
 });
 
 export default rootReducer;

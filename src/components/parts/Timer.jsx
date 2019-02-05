@@ -1,85 +1,90 @@
 import React, { PureComponent } from 'react';
+// eslint-disable-next-line
 import PropTypes from 'prop-types';
 
 import { Duration } from 'luxon';
 
 import Fab from '@material-ui/core/Fab';
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from '@material-ui/core/styles';
 
 import styles from '../../styles';
 
 class Timer extends PureComponent {
+  static propTypes = {
+    started: PropTypes.bool.isRequired,
+    duration: PropTypes.number,
+  };
 
-    constructor(props) {
-        super(props);
+  static defaultProps = {
+    duration: 0,
+  };
 
-        this.state = {
-            time: Duration.fromMillis(props.duration ? props.duration : 0),
-            intervalId: null,
-        };
-    }
+  constructor(props) {
+    super(props);
+    const { duration } = props;
 
-    static propTypes = {
-        started: PropTypes.bool.isRequired,
-        duration: PropTypes.number,
+    this.state = {
+      time: Duration.fromMillis(duration),
+      intervalId: null,
     };
+  }
 
-    componentDidMount() {
-        const { started } = this.props;
-        this.runner(started);
+  state = {
+    time: null,
+  };
+
+  componentDidMount() {
+    const { started } = this.props;
+    this.runner(started);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { started } = this.props;
+    if (started !== prevProps.started) {
+      this.runner(started);
     }
+  }
 
-    componentDidUpdate(prevProps) {
-        const { started } = this.props;
-        if (started !== prevProps.started) {
-            this.runner(started);
-        }
+  componentWillUnmount() {
+    const { intervalId } = this.state;
+
+    clearInterval(intervalId);
+  }
+
+  runner(value) {
+    const { intervalId } = this.state;
+
+    if (value) {
+      const interval = setInterval(() => {
+        this.addSecond();
+      }, 1000);
+      this.setState({
+        intervalId: interval,
+      });
+    } else {
+      clearInterval(intervalId);
+      this.setState({
+        time: Duration.fromMillis(0),
+      });
     }
+  }
 
-    componentWillUnmount() {
-        const { intervalId } = this.state;
+  addSecond() {
+    const { time } = this.state;
+    this.setState({
+      time: time.plus(Duration.fromMillis(1000)),
+    });
+  }
 
-        clearInterval(intervalId);
-    }
+  render() {
+    const { time } = this.state;
+    const { classes } = this.props;
 
-    runner(value) {
-        const { intervalId } = this.state;
-
-        if (value) {
-            const interval = setInterval(() => {
-                this.addSecond();
-            }, 1000);
-            this.setState({
-                intervalId: interval,
-            })
-        } else {
-            clearInterval(intervalId);
-            this.setState({
-                time: Duration.fromMillis(0),
-            });
-        }
-    }
-
-
-    addSecond() {
-        const { time } = this.state;
-        this.setState({
-            time: time.plus(Duration.fromMillis(1000)),
-        });
-    }
-
-    state = {
-        time: null,
-    };
-
-    render() {
-        const { time } = this.state;
-        const { classes } = this.props;
-
-        return (
-            <Fab variant="round" className={classes.timerClock}>
-                { time.toFormat('hh:mm:ss') }
-            </Fab>
-        );
-    }
-} export default withStyles(styles)(Timer);
+    return (
+      <Fab variant="round" className={classes.timerClock}>
+        {time.toFormat('hh:mm:ss')}
+      </Fab>
+    );
+  }
+}
+export default withStyles(styles)(Timer);

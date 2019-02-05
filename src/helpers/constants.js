@@ -9,8 +9,3 @@ export const GENERATE_MAX_DURATION = 90;
 export const GENERATE_MIN_INTERVAL = 10;
 export const GENERATE_MAX_INTERVAL = 50;
 export const GENERATE_START_HOUR = 4;
-
-export const ActionTypes = {
-    GET_TASK_SUCCESS: 'GET_TASK_SUCCESS',
-    GET_TASK_FAILURE: 'GET_TASK_FAILURE',
-};
